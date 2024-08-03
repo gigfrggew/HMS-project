@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container3">
+        <button id="adminLoginButton" onclick="showLogin()">ADMIN-LOGIN</button>
+        
+        <div id="adminLogin" style="display: none;">
+            <form id="adminLoginForm">
+                <label id="A-U" for="adminUsername">Username</label>
+                <input type="text" id="adminUsername" name="adminUsername" required><br><br>
+                
+                <label id="A-P" for="adminPassword">Password</label>
+                <input type="password" id="adminPassword" name="adminPassword" required><br><br>
+                
+                <button id="A-L" type="submit">Login</button>
+            </form>
+        </div>
+        
+        <div id="adminActions" style="display: none;">
+            <button id="V-D" onclick="viewDetails()">VIEW-DETAILS</button>
+        </div>
+        
+        <div id="details" style="display: none;"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function showLogin() {
+            document.getElementById('adminLogin').style.display = 'block';
+            document.getElementById('adminLoginButton').style.display = 'none';
+        }
+
+        document.getElementById('adminLoginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch('/admin-login', {
+                method: 'POST',
+                body: JSON.stringify(Object.fromEntries(formData)),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('adminActions').style.display = 'block';
+                    document.getElementById('adminLogin').style.display = 'none';
+                } else {
+                    alert('Login failed. Please try again.');
+                }
+            });
+        });
+
+        function viewDetails() {
+            fetch('/view-details')
+            .then(response => response.json())
+            .then(data => {
+                const detailsDiv = document.getElementById('details');
+                detailsDiv.style.display = 'block';
+                document.getElementById('adminActions').style.display = 'none';
+
+                detailsDiv.innerHTML = '<h2 ID="LD-1">Login Details</h2>';
+                data.logins.forEach(login => {
+                    detailsDiv.innerHTML += `<b><p id="A-details1">${login.name} (${login.gender}) - ${login.hostel} - ${login.loginTime}</p></b>`;
+                });
+
+                detailsDiv.innerHTML += '<h2 ID="LD-2">Logout Details</h2>';
+                data.logouts.forEach(logout => {
+                    detailsDiv.innerHTML += `<b><p id="A-details2">${logout.name} (${logout.gender}) - ${logout.hostel} - ${logout.logoutTime}</p></b>`;
+                });
+            });
+        }
+    </script>
+</body>
+</html>

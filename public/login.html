@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container1">
+        <h1 id="login">Login</h1>
+        <form id="loginForm">
+            <label id="N" for="name">Name</label>
+            <input type="text" id="name" name="name" required><br><br>
+            
+            <label id="G" for="gender">Gender</label>
+            <select id="gender" name="gender" onchange="updateHostelOptions()" required>
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select><br><br>
+            
+            <label id="HO" for="hostel">Hostel Name</label>
+            <select id="hostel" name="hostel" required>
+                <option value="">Select</option>
+            </select><br><br>
+            
+            <label id="LT"for="loginTime">Login Time</label>
+            <input type="datetime-local" id="loginTime" name="loginTime" required><br><br>
+            
+            <button id="S" type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        function updateHostelOptions() {
+            const gender = document.getElementById('gender').value;
+            const hostelSelect = document.getElementById('hostel');
+            hostelSelect.innerHTML = '';
+            if (gender === 'male') {
+                hostelSelect.innerHTML = '<option value="b1">B1</option><option value="b2">B2</option>';
+            } else if (gender === 'female') {
+                hostelSelect.innerHTML = '<option value="g1">G1</option><option value="g2">G2</option>';
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            const formData = new FormData(this);
+            const jsonData = {};
+            formData.forEach((value, key) => {
+                jsonData[key] = value;
+            });
+
+            fetch('/login', {
+                method: 'POST',
+                body: JSON.stringify(jsonData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Login successful!');
+                    window.location.href = 'index.html'; // Redirect to index.html
+                } else {
+                    alert('Login failed. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>
