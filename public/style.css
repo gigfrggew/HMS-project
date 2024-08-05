@@ -6,23 +6,103 @@ body {
     height: 100vh;
     background-color: #f0f0f0;
     margin: 0;
-    background-size:cover;
+    background-size: cover;
     background-image: url("front-page.jpg");
 }
 
-.h{
+.h {
     color: white;
-    margin-left:40px;
-    margin-right:40px
+    margin-left: 40px;
+    margin-right: 40px
+}
+/*modified*/
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('https://via.placeholder.com/800x600') no-repeat center center fixed;
+    background-size: cover;
 }
 
+.card {
+    position: relative; /* Needed for the pseudo-element */
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    width: 300px;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit; /* Copy the card's background */
+    filter: blur(10px); /* Apply blur effect */
+    z-index: -1;
+    opacity: 0.5; /* Adjust opacity if needed */
+}
+
+.card-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.card-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+.li {
+    background-color: #4CAF50; /* Green */
+}
+
+.lo {
+    background-color: #f44336; /* Red */
+}
+
+.A {
+    background-color: #2196F3; /* Blue */
+}
+
+/* end */
+
+/* 
 .container {
     text-align: center;
-    border:0px solid whitesmoke;
+    border: 0px solid whitesmoke;
+    background: rgba(255, 255, 255, 0.4);
+    overflow: hidden;
 }
-.container:hover{
-    border:5px solid whitesmoke;
-}
+
+.container:hover {
+    border: 5px solid whitesmoke;
+} */
 
 .buttons button {
     display: block;
@@ -31,26 +111,30 @@ body {
     margin: 50px auto;
     font-size: 18px;
     cursor: pointer;
-    background-color:white;
-    border:0.2px white;
+    background-color: white;
+    border: 0.2px white;
 }
-.buttons button:hover{
-    width:300px;
-    border:2px solid white;
+
+.buttons button:hover {
+    width: 300px;
+    border: 2px solid white;
 }
 
 h1 {
     font-size: 36px;
     margin-bottom: 30px;
 }
-button.li:hover{
-    background-color:rgb(34, 146, 211);
+
+button.li:hover {
+    background-color: rgb(34, 146, 211);
 }
-button.lo:hover{
-    background-color:rgb(34, 146, 211);
+
+button.lo:hover {
+    background-color: rgb(34, 146, 211);
 }
-button.A:hover{
-    background-color:rgb(34, 146, 211);
+
+button.A:hover {
+    background-color: rgb(34, 146, 211);
 }
 
 /* login.html */
@@ -58,98 +142,113 @@ button.A:hover{
 .container1 {
     text-align: center;
 }
-.container1:hover{
-    border:3px solid whitesmoke;
-    border-radius:15px;
-    width:580px;
-    height:450px;
-}
-#login{
-    color:whitesmoke;
-}
-input#name{
-    width:270px;
-    margin-left:50px;
-    margin-bottom:25px;
-    margin-right:90px;
-    height:25px;
-}
-label#N{
-    margin-right:;
-    margin-bottom:25px;
-    font-size:18px;
-    color:whitesmoke;
-}
-select#gender{
-    height:25px;
-    margin-right:300px;
-    margin-bottom:25px;
-    
-}
-label#G{
-    margin-right:40px;
-    margin-bottom:25px;
-    font-size:18px;
-    color:whitesmoke;
-}
-select#hostel{
-    margin-right:310px;
-    margin-bottom:25px;
-    height:25px;
-}
-label#HO{
-    margin-right:0px;
-    margin-bottom:25px;
-    font-size:18px;
-    color:whitesmoke;
-}
-#loginTime{
-        margin-right:205px;
-        margin-left:10px;
-        margin-bottom:35px;
-        height:25px;
-}
-label#LT{
-    color:whitesmoke;
-    margin-right:0px;
-    font-size:18px;
-}
-#S{
-    margin-right:90px;
-    width:65px;
-    height:30px;
-}
-#S:hover{
-    width:85px;
-    height:40px;
-    border:3px solid white;
-    border-radius:5px;
-    background-color:rgb(70, 143, 252);
+
+.container1:hover {
+    border: 3px solid whitesmoke;
+    border-radius: 15px;
+    width: 580px;
+    height: 450px;
 }
 
-#name:hover{
-    width:290px;
-    height:35px;
-    border:3px solid white;
-    border-radius:5px;
+#login {
+    color: whitesmoke;
 }
-#gender:hover{
-    width:80px;
-    height:30px;
-    border:3px solid white;
-    border-radius:5px;
+
+input#name {
+    width: 270px;
+    margin-left: 50px;
+    margin-bottom: 25px;
+    margin-right: 90px;
+    height: 25px;
 }
-#hostel:hover{
-    width:70px;
-    height:30px;
-    border:3px solid white;
-    border-radius:5px;
+
+label#N {
+    margin-right: ;
+    margin-bottom: 25px;
+    font-size: 18px;
+    color: whitesmoke;
 }
-#loginTime:hover{
-    width:175px;
-    height:35px;
-    border:3px solid white;
-    border-radius:5px;
+
+select#gender {
+    height: 25px;
+    margin-right: 300px;
+    margin-bottom: 25px;
+
+}
+
+label#G {
+    margin-right: 40px;
+    margin-bottom: 25px;
+    font-size: 18px;
+    color: whitesmoke;
+}
+
+select#hostel {
+    margin-right: 310px;
+    margin-bottom: 25px;
+    height: 25px;
+}
+
+label#HO {
+    margin-right: 0px;
+    margin-bottom: 25px;
+    font-size: 18px;
+    color: whitesmoke;
+}
+
+#loginTime {
+    margin-right: 205px;
+    margin-left: 10px;
+    margin-bottom: 35px;
+    height: 25px;
+}
+
+label#LT {
+    color: whitesmoke;
+    margin-right: 0px;
+    font-size: 18px;
+}
+
+#S {
+    margin-right: 90px;
+    width: 65px;
+    height: 30px;
+}
+
+#S:hover {
+    width: 85px;
+    height: 40px;
+    border: 3px solid white;
+    border-radius: 5px;
+    background-color: rgb(70, 143, 252);
+}
+
+#name:hover {
+    width: 290px;
+    height: 35px;
+    border: 3px solid white;
+    border-radius: 5px;
+}
+
+#gender:hover {
+    width: 80px;
+    height: 30px;
+    border: 3px solid white;
+    border-radius: 5px;
+}
+
+#hostel:hover {
+    width: 70px;
+    height: 30px;
+    border: 3px solid white;
+    border-radius: 5px;
+}
+
+#loginTime:hover {
+    width: 175px;
+    height: 35px;
+    border: 3px solid white;
+    border-radius: 5px;
 }
 
 /* logout*/
@@ -157,214 +256,251 @@ label#LT{
 .container2 {
     text-align: center;
 }
-.container2:hover{
-    border:3px solid whitesmoke;
-    border-radius:15px;
-    width:580px;
-    height:450px;
-}
-#logout{
-    color:whitesmoke;
-}
-input#name{
-    width:270px;
-    margin-left:50px;
-    margin-bottom:25px;
-    margin-right:90px;
-    height:25px;
-}
-label#N1{
-    margin-right:;
-    margin-bottom:25px;
-    font-size:18px;
-    color:whitesmoke;
-}
-select#gender{
-    height:25px;
-    margin-right:300px;
-    margin-bottom:25px;
-    
-}
-label#G1{
-    margin-right:40px;
-    margin-bottom:25px;
-    font-size:18px;
-    color:whitesmoke;
-}
-select#hostel{
-    margin-right:310px;
-    margin-bottom:25px;
-    height:25px;
-}
-label#HO1{
-    margin-right:0px;
-    margin-bottom:25px;
-    font-size:18px;
-    color:whitesmoke;
-}
-#logoutTime{
-        margin-right:205px;
-        margin-left:10px;
-        margin-bottom:35px;
-        height:25px;
-}
-label#LT1{
-    color:whitesmoke;
-    margin-right:0px;
-    font-size:18px;
-}
-#S1{
-    margin-right:90px;
-    height:30px;
-    width:65px;
-}
-#S1:hover{
-    width:85px;
-    height:40px;
-    border:3px solid white;
-    border-radius:5px;
-    background-color:rgb(70, 143, 252);
+
+.container2:hover {
+    border: 3px solid whitesmoke;
+    border-radius: 15px;
+    width: 580px;
+    height: 450px;
 }
 
-#name:hover{
-    width:290px;
-    height:35px;
-    border:3px solid white;
-    border-radius:5px;
+#logout {
+    color: whitesmoke;
 }
-#gender:hover{
-    width:80px;
-    height:30px;
-    border:3px solid white;
-    border-radius:5px;
+
+input#name {
+    width: 270px;
+    margin-left: 50px;
+    margin-bottom: 25px;
+    margin-right: 90px;
+    height: 25px;
 }
-#hostel:hover{
-    width:70px;
-    height:30px;
-    border:3px solid white;
-    border-radius:5px;
+
+label#N1 {
+    margin-right: ;
+    margin-bottom: 25px;
+    font-size: 18px;
+    color: whitesmoke;
 }
-#logoutTime:hover{
-    width:175px;
-    height:35px;
-    border:3px solid white;
-    border-radius:5px;
+
+select#gender {
+    height: 25px;
+    margin-right: 300px;
+    margin-bottom: 25px;
+
+}
+
+label#G1 {
+    margin-right: 40px;
+    margin-bottom: 25px;
+    font-size: 18px;
+    color: whitesmoke;
+}
+
+select#hostel {
+    margin-right: 310px;
+    margin-bottom: 25px;
+    height: 25px;
+}
+
+label#HO1 {
+    margin-right: 0px;
+    margin-bottom: 25px;
+    font-size: 18px;
+    color: whitesmoke;
+}
+
+#logoutTime {
+    margin-right: 205px;
+    margin-left: 10px;
+    margin-bottom: 35px;
+    height: 25px;
+}
+
+label#LT1 {
+    color: whitesmoke;
+    margin-right: 0px;
+    font-size: 18px;
+}
+
+#S1 {
+    margin-right: 90px;
+    height: 30px;
+    width: 65px;
+}
+
+#S1:hover {
+    width: 85px;
+    height: 40px;
+    border: 3px solid white;
+    border-radius: 5px;
+    background-color: rgb(70, 143, 252);
+}
+
+#name:hover {
+    width: 290px;
+    height: 35px;
+    border: 3px solid white;
+    border-radius: 5px;
+}
+
+#gender:hover {
+    width: 80px;
+    height: 30px;
+    border: 3px solid white;
+    border-radius: 5px;
+}
+
+#hostel:hover {
+    width: 70px;
+    height: 30px;
+    border: 3px solid white;
+    border-radius: 5px;
+}
+
+#logoutTime:hover {
+    width: 175px;
+    height: 35px;
+    border: 3px solid white;
+    border-radius: 5px;
 }
 
 /*admin*/
 
 
-.container3{
-    width:400px;
-    height:800px;
+.container3 {
+    width: 400px;
+    height: 800px;
 }
-button#adminLoginButton{
-    margin-top:100px;
-    margin-left:110px;
-    margin-bottom:50px;
-    height:60px;width:180px;
-    border:2px solid whitesmoke;
-    border-radius:5px;
-    font-size:18px;
-}#A-U{
-    padding-left:50px;
-    margin-top:30px;
-    color:white;
-    font-size:18px;
+
+button#adminLoginButton {
+    margin-top: 100px;
+    margin-left: 110px;
+    margin-bottom: 50px;
+    height: 60px;
+    width: 180px;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    font-size: 18px;
 }
-#A-P{
-    font-size:18px;
-    padding-top:30px;
-    margin-left:50px;
-    color:white;
+
+#A-U {
+    padding-left: 50px;
+    margin-top: 30px;
+    color: white;
+    font-size: 18px;
 }
-button#A-L{
-    margin-left:180px;
-    margin-top:30px;
-    width:50px;
-    height:30px;
-    border:2px solid white;
+
+#A-P {
+    font-size: 18px;
+    padding-top: 30px;
+    margin-left: 50px;
+    color: white;
 }
-button#A-L:hover{
-    width:60px;
-    height:35px;
-    border:2px solid whitesmoke;
-    border-radius:5px;
-    background-color:rgb(70, 143, 252);
+
+button#A-L {
+    margin-left: 180px;
+    margin-top: 30px;
+    width: 50px;
+    height: 30px;
+    border: 2px solid white;
 }
-form#adminLoginForm{
-    margin-top:250px;
-    height:250px;
-    width:450px;
+
+button#A-L:hover {
+    width: 60px;
+    height: 35px;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    background-color: rgb(70, 143, 252);
 }
-form#adminLoginForm:hover{
-    height:270px;
-    width:470px;
-    border:2px  solid white;
-    border-radius:5px;
+
+form#adminLoginForm {
+    margin-top: 250px;
+    height: 250px;
+    width: 450px;
 }
-input#adminUsername{
-    margin-left:20px;
-    margin-top:30px;
-    border:2px solid whitesmoke;
+
+form#adminLoginForm:hover {
+    height: 270px;
+    width: 470px;
+    border: 2px solid white;
+    border-radius: 5px;
 }
-input#adminUsername:hover{
+
+input#adminUsername {
+    margin-left: 20px;
+    margin-top: 30px;
+    border: 2px solid whitesmoke;
+}
+
+input#adminUsername:hover {
     height: 25px;
-    width:180px; 
-    border:2px solid whitesmoke;
-    border-radius:5px;
+    width: 180px;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
 }
-input#adminPassword{
-    margin-left:20px;
-    margin-top:30px;
-    border:2px solid white;
+
+input#adminPassword {
+    margin-left: 20px;
+    margin-top: 30px;
+    border: 2px solid white;
 }
-input#adminPassword:hover{
+
+input#adminPassword:hover {
     height: 25px;
-    width:180px; 
-    border:2px solid whitesmoke;
-    border-radius:5px;
+    width: 180px;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
 }
-#V-D{
-    margin-top:50px;
-    margin-left:150px;
-    width:120px;
-    height:25px;
+
+#V-D {
+    margin-top: 50px;
+    margin-left: 150px;
+    width: 120px;
+    height: 25px;
 }
-#LD-1{
-    font-size:26px;
-    color:whitesmoke;
+
+#LD-1 {
+    font-size: 26px;
+    color: whitesmoke;
 }
-#LD-2{
-    margin-top:30px;
-    font-size:26px;
-    color:whitesmoke;
+
+#LD-2 {
+    margin-top: 30px;
+    font-size: 26px;
+    color: whitesmoke;
 }
-#A-details1{
-    color:black;
-    width:400px;
-    height:20px;
+
+#A-details1 {
+    color: black;
+    width: 400px;
+    height: 20px;
 }
-#A-details2{
-    color:black;
-    width:400px;
-    height:20px;
+
+#A-details2 {
+    color: black;
+    width: 400px;
+    height: 20px;
 }
-p#A-details1:hover{
-    width:420px;
-    height:25px;
+
+p#A-details1:hover {
+    width: 420px;
+    height: 25px;
 }
-p#A-details2:hover{
-    width:420px;
-    height:25px;
+
+p#A-details2:hover {
+    width: 420px;
+    height: 25px;
 }
-div#adminActions{
-    height:600px;
-    width:600px;
-    margin-top:300px;
+
+div#adminActions {
+    height: 600px;
+    width: 600px;
+    margin-top: 300px;
 }
-div#details{
-    width:400px;
-    height:420px;
-    margin-top:200px;
+
+div#details {
+    width: 400px;
+    height: 420px;
+    margin-top: 200px;
 }
